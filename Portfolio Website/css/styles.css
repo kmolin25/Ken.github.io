@@ -1,0 +1,10 @@
+@charset "UTF-8";
+/* CSS Document */
+.page {border:50px solid #8FB9AC; padding: 400px; background: url('../Images/blueroom.jpg'); background-position: 50% 50%; background-repeat: no-repeat; background-size: cover; positiion: center center;}
+/* Contact */
+.centered { 
+  position: absolute;
+  top: -10%;
+  left: 60%;
+  transform: translate(60%, 60%);
+}
