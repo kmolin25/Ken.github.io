@@ -1,12 +1,58 @@
 <!doctype html>
 <html>
+	
 <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+	<script type="text/javascript">
+/*
+   Image Popup Handler
+   Version 1.0
+   May 23, 2016
+
+   Will Bontrager Software LLC
+   https://www.willmaster.com/
+   Copyright 2016 Will Bontrager Software LLC
+
+   This software is provided "AS IS," without any warranty of any kind, without even 
+   any implied warranty such as merchantability or fitness for a particular purpose. 
+   Use of this software is subject to the Website's Secret Software License Agreement.
+   https://www.willmaster.com/software/WebSitesSecret/WS_LicenseAgreement.html
+*/
+function CloseImagePopup(divid) { document.getElementById(divid).style.display = "none"; }
+function ShowImagePopup(dividname,imgdividname,imgidname,imgurl)
+{
+   var imgid = document.getElementById(imgidname);
+   var divid = document.getElementById(dividname);
+   var imgdivid = document.getElementById(imgdividname);
+   imgid.src = imgurl;
+   var vpheight = 0;
+   if(document.documentElement && document.documentElement.clientHeight) { vpheight = document.documentElement.clientHeight; }
+   else if(document.body) { vpheight = document.body.clientHeight; }
+   else if(self.innerWidth) { vpheight = self.innerHeight; }
+   if( ! vpheight ) { return; }
+   var imgwidth = parseInt(imgid.naturalWidth);
+   if( ! imgwidth ) { return; }
+   var imgheight = parseInt(imgid.naturalHeight);
+   imgdivid.style.maxWidth = imgwidth + "px";
+   imgdivid.style.maxHeight = imgheight + "px";
+   imgdivid.style.marginTop = parseInt((vpheight/2)-(imgheight/2)) + "px";
+   divid.style.display = "block";
+   var scrollHeight = imgdivid.scrollHeight;
+   if( scrollHeight > vpheight )
+   {
+      scrollHeight = vpheight; 
+      imgid.style.height = vpheight + "px";
+      imgdivid.style.width = parseInt(vpheight*(imgwidth/imgheight)) + "px";
+   }
+   imgdivid.style.marginTop = parseInt((vpheight/2)-(scrollHeight/2)) + "px";
+} // function ShowImagePopup()
+</script>
       <meta charset="UTF-8">
       <link rel="stylesheet" href="css/styles.css"																   
 <title>Kenneth Molina</title>
 	
 	<body>Portfolio Website</body>
-	
+
 </head>
 
 <body>
@@ -21,6 +67,42 @@
         <div class="centered">Contact Information</div>
 		
 	</div>
-	
+	  
+        
+   
+
+	<!-- Begin popup image code. -->
+<div id="pop-up-div" style="display:none; z-index:96; position:fixed; top:0px; right:0px; bottom:0px; left:0px; background-color:transparent;" onclick="CloseImagePopup('pop-up-div')">
+
+<!-- The div with the image. -->
+<div id="pop-up-image-div" style="position:relative; display:block; z-index:97; max-width:100%; max-height:100%; margin:0px auto 0px auto; box-shadow:0px 0px 20px 1px #ccc; background-color:transparent;">
+
+<!-- The image in the popup. -->
+<img id="pop-up-image" src="/Images/artframebluetxt.jpg" style="z-index:98; border:none; outline:none; margin-top:0; max-width:100%; max-height:100%; width:auto; height:auto;">
+
+<!-- Optional "close popup" icon -->
+<img src="//www.willmaster.com/images/closeboxXbold25.png" style="position:absolute; top:0; right:0; z-index:99; cursor:pointer;" onclick="CloseImagePopup('pop-up-div')">
+
+</div><!-- id="pop-up-image-div" -->
+
+</div><!-- id="pop-up-div" -->
+<!-- End of popup image code. -->
+<!-- Div for the image visible on page load. -->
+<div style="position:relative; width:150px; cursor:pointer;" onclick="ShowImagePopup('pop-up-div','pop-up-image-div','pop-up-image','/Images/blueroomtxt.jpg')">
+
+<!-- The image visible on page load. -->
+<img src="/Images/blueroomtxt.jpg" style="width:100%; height:auto;" alt="Image for example">
+
+<!-- Optional magnifying glass div and image. -->
+<div style="display:table; z-index:2; position:absolute; top:-0px; right:-0px; cursor:pointer;" onclick="ShowImagePopup('pop-up-div','pop-up-image-div','pop-up-image','/Images/blueroomtxt.jpg')">
+<img src="//www.willmaster.com/library/images/magnifying_glass.png" style="height:50px; width:auto; border:none; outline:none;">
+</div>
+
+</div>
+
+
+
 </body>
+
+       
 </html>
