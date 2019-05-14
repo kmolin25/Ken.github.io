@@ -77,3 +77,26 @@ nav ul ul ul { left: 100%; top: 0px; }
 nav > ul { padding-left: 200px; }
 nav > ul > li { float: left; }
 nav > ul > li > a { width: auto; padding: 10px 20px 15px 20px; }
+
+
+
+@media only screen and (max-width: 768px) {
+/* mobile*/ 
+	body { 
+		background-color: #766565;
+		color: #C4C4C4;
+	}
+	nav { background-color: #78001D }
+	nav ul li:hover { background-color: #78001d; }
+	nav ul li a:hover { background-color: #011222; }
+	nav ul ul { background-color: #78001d; }
+	img { max-width: 100%;}
+	header { background-color:#78001D; }
+	header a.name{ positon: absolute; 
+	display: block; width: 160px; height: 66px;
+	background: url(../images/logo2.jpg) no-repeat 0 0; background-size: contain; position: relative;
+	top: 15px; left: 20px;
+	}
+	footer { background-color: #78001d; }
+
+
